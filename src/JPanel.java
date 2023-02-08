@@ -5,8 +5,10 @@ import java.awt.event.ActionListener;
 
 public class JPanel extends javax.swing.JPanel {
 
-    public String text;
-    JPanel(){
+    public JTextField textField1;
+    public String JText;
+
+    public void init(){
         setBackground(Color.BLACK);
         setSize(900, 600);
         setLayout(new FlowLayout());
@@ -15,30 +17,14 @@ public class JPanel extends javax.swing.JPanel {
         add(button1);
         button1.addActionListener(new Button1ActionListener());
 
-        JTextField textField1 = new JTextField(40);
+        textField1 = new JTextField(40);
         add(textField1);
-        textField1.addActionListener(new textField1ActionListener());
     }
 
-    public void x (){
-        this.textField1.getText();
-    }
-
-
-
-    class Button1ActionListener implements ActionListener{
-
+    public class Button1ActionListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println(text);
-        }
-    }
-
-    class textField1ActionListener implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
+            JText = textField1.getText();
         }
     }
 }
