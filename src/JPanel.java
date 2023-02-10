@@ -9,6 +9,7 @@ public class JPanel extends javax.swing.JPanel {
     public String JText;
 
     public void init(){
+
         setBackground(Color.BLACK);
         setSize(900, 600);
         setLayout(new FlowLayout());
@@ -19,6 +20,17 @@ public class JPanel extends javax.swing.JPanel {
 
         textField1 = new JTextField(40);
         add(textField1);
+
+        BookTableModel bookTableModel = new BookTableModel();
+        JTable table1 = new JTable(bookTableModel);
+        JScrollPane jScrollPaneTable1 = new JScrollPane(table1);
+        jScrollPaneTable1.setPreferredSize(new Dimension(850, 400));
+
+        for (int i = 0; i < 10; i++) {
+            bookTableModel.addDate(new String[]{"1", "2", "3", "4", "5", "6"});
+        }
+
+        add(jScrollPaneTable1);
     }
 
     public class Button1ActionListener implements ActionListener{
