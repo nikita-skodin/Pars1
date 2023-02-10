@@ -33,9 +33,9 @@ public class BookTableModel extends AbstractTableModel {
     public String getColumnName(int columnIndex) {
         return switch (columnIndex) {
             case 0 -> "id";
-            case 1 -> "title";
-            case 2 -> "is bn";
-            case 3 -> "description";
+            case 1 -> "название города";
+            case 2 -> "имя продавца";
+            case 3 -> "цена";
             case 4 -> "testField";
             default -> "";
         };

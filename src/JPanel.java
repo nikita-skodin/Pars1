@@ -7,6 +7,7 @@ public class JPanel extends javax.swing.JPanel {
 
     public JTextField textField1;
     public String JText;
+    public BookTableModel bookTableModel;
 
     public void init(){
 
@@ -21,14 +22,12 @@ public class JPanel extends javax.swing.JPanel {
         textField1 = new JTextField(40);
         add(textField1);
 
-        BookTableModel bookTableModel = new BookTableModel();
+        bookTableModel = new BookTableModel();
         JTable table1 = new JTable(bookTableModel);
         JScrollPane jScrollPaneTable1 = new JScrollPane(table1);
         jScrollPaneTable1.setPreferredSize(new Dimension(850, 400));
 
-        for (int i = 0; i < 10; i++) {
-            bookTableModel.addDate(new String[]{"1", "2", "3", "4", "5", "6"});
-        }
+        tableAdd();
 
         add(jScrollPaneTable1);
     }
@@ -37,6 +36,12 @@ public class JPanel extends javax.swing.JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             JText = textField1.getText();
+        }
+    }
+
+    public void tableAdd(){
+        for (int i = 0; i < 10; i++) {
+            bookTableModel.addDate(new String[]{"1", "2", "3", "4", "5", "6"});
         }
     }
 }
