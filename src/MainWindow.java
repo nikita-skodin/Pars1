@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainWindow extends JFrame {
 
@@ -41,10 +42,7 @@ public class MainWindow extends JFrame {
         button.click();
 
         WebElement lable = webDriver.findElement(By.xpath("//*[@id=\"header\"]/div[1]/div[2]/div/div[1]/div/div/input"));
-        lable.sendKeys("Айфон 12");
-
-//        lable.sendKeys(Keys.ENTER);
-
+        lable.sendKeys("самсунг");
 
         Thread.sleep(2000);
         WebElement button1 = webDriver.findElement(By.className("styles_search_button__5p2AJ"));
@@ -52,52 +50,35 @@ public class MainWindow extends JFrame {
         Thread.sleep(11000);
 
         Document doc = Jsoup.connect(webDriver.getCurrentUrl()).get();
-//        System.out.println(doc.select("h3"));
+
         Elements els1 = doc.getElementsByClass("styles_title__XS_QS");
         Elements els2 = doc.getElementsByClass("styles_price__tiO8k");
+        Elements els3 = doc.getElementsByClass("styles_secondary__dylmH");
+
+
+
+        ArrayList<String> arrayList1 = new ArrayList<>();
+        ArrayList<String> arrayList2 = new ArrayList<>();
+        ArrayList<String> arrayList3 = new ArrayList<>();
+
+
 
 
         for (Element el1: els1) {
-            System.out.println(el1.text());
+            arrayList1.add(el1.text());
         }
-
-        System.out.println();
 
         for (Element el2: els2) {
-            System.out.println(el2.text());
+            arrayList2.add(el2.text());
+        }
+
+        for (Element el3: els3) {
+            arrayList3.add(el3.text());
         }
 
 
-
-
-
-
-
-//        FileWriter fileWriter = new FileWriter("main.html");
-//        fileWriter.write(String.valueOf(doc));
-//        fileWriter.close();
-
-
-
-
-
-//        System.setProperty("webdriver.chrome.driver", "C:\\java_projects\\Pars1\\Selenium\\chromedriver_win32\\chromedriver.exe");
-//        WebDriver driver = new ChromeDriver();
-//
-//        String baseUrl = "http://demo.guru99.com/test/newtours/";
-//        String expectedTitle = "Welcome: Mercury Tours";
-//        String actualTitle;
-//
-//        driver.get(baseUrl);
-//
-//        actualTitle = driver.getTitle();
-//
-//        if (actualTitle.equals(expectedTitle)){
-//            System.out.println("Test Passed!");
-//        } else {
-//            System.out.println("Test Failed");
-//        }
-
-
+        for (int i = 0; i < arrayList1.size(); i++) {
+            System.out.println(i + " --- " + arrayList1.get(i) + " --- " + arrayList2.get(i) + " --- " + arrayList3.get(i));
+        }
     }
 }
