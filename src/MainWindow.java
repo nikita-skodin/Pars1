@@ -32,53 +32,9 @@ public class MainWindow extends JFrame {
     }
 
     public static void main(String[] args) throws InterruptedException, IOException {
-//        MainWindow mainWindow = new MainWindow();
-        System.setProperty("webdriver.chrome.driver", "C:\\java_projects\\Pars1\\Selenium\\chromedriver_win32\\chromedriver.exe");
-        WebDriver webDriver = new ChromeDriver();
-        webDriver.get("https://www.kufar.by/l");
+        Parsing parsing = new Parsing();
+        parsing.pars();
+        MainWindow mainWindow = new MainWindow();
 
-
-        WebElement button = webDriver.findElement(By.xpath("//*[@id=\"__next\"]/div[3]/div/div[2]/button"));
-        button.click();
-
-        WebElement lable = webDriver.findElement(By.xpath("//*[@id=\"header\"]/div[1]/div[2]/div/div[1]/div/div/input"));
-        lable.sendKeys("самсунг");
-
-        Thread.sleep(2000);
-        WebElement button1 = webDriver.findElement(By.className("styles_search_button__5p2AJ"));
-        button1.click();
-        Thread.sleep(11000);
-
-        Document doc = Jsoup.connect(webDriver.getCurrentUrl()).get();
-
-        Elements els1 = doc.getElementsByClass("styles_title__XS_QS");
-        Elements els2 = doc.getElementsByClass("styles_price__tiO8k");
-        Elements els3 = doc.getElementsByClass("styles_secondary__dylmH");
-
-
-
-        ArrayList<String> arrayList1 = new ArrayList<>();
-        ArrayList<String> arrayList2 = new ArrayList<>();
-        ArrayList<String> arrayList3 = new ArrayList<>();
-
-
-
-
-        for (Element el1: els1) {
-            arrayList1.add(el1.text());
-        }
-
-        for (Element el2: els2) {
-            arrayList2.add(el2.text());
-        }
-
-        for (Element el3: els3) {
-            arrayList3.add(el3.text());
-        }
-
-
-        for (int i = 0; i < arrayList1.size(); i++) {
-            System.out.println(i + " --- " + arrayList1.get(i) + " --- " + arrayList2.get(i) + " --- " + arrayList3.get(i));
-        }
     }
 }

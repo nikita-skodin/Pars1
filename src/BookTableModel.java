@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class BookTableModel extends AbstractTableModel {
 
-    private int columnCount = 5;
-    private ArrayList <String []> arrayList;
+    private int columnCount = 4;
+    private static ArrayList <String []> arrayList;
 
     public BookTableModel(){
         arrayList = new ArrayList<String []>();
@@ -32,16 +32,15 @@ public class BookTableModel extends AbstractTableModel {
     @Override
     public String getColumnName(int columnIndex) {
         return switch (columnIndex) {
-            case 0 -> "id";
-            case 1 -> "название города";
-            case 2 -> "имя продавца";
-            case 3 -> "цена";
-            case 4 -> "testField";
+            case 0 -> "Id";
+            case 1 -> "Название товара";
+            case 2 -> "Цена";
+            case 3 -> "Регион";
             default -> "";
         };
     }
 
-    public void addDate(String[] row){
+    public static void addDate(String[] row){
         String[] rowTable;
         rowTable = row;
         arrayList.add(rowTable);

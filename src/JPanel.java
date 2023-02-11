@@ -25,7 +25,7 @@ public class JPanel extends javax.swing.JPanel {
         bookTableModel = new BookTableModel();
         JTable table1 = new JTable(bookTableModel);
         JScrollPane jScrollPaneTable1 = new JScrollPane(table1);
-        jScrollPaneTable1.setPreferredSize(new Dimension(850, 400));
+        jScrollPaneTable1.setPreferredSize(new Dimension(850, 500));
 
         tableAdd();
 
@@ -40,8 +40,10 @@ public class JPanel extends javax.swing.JPanel {
     }
 
     public void tableAdd(){
-        for (int i = 0; i < 10; i++) {
-            bookTableModel.addDate(new String[]{"1", "2", "3", "4", "5", "6"});
-        }
+        String[] mas;
+            for (int j = 0; j < Parsing.arrayList1.size(); j++) {
+                mas = new String [] {String.valueOf(j + 1), Parsing.arrayList1.get(j), Parsing.arrayList2.get(j), Parsing.arrayList3.get(j) };
+                BookTableModel.addDate(mas);
+            }
     }
 }
